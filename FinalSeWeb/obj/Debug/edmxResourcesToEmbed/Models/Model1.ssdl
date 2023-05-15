@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FINAL_SEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACCOUNTANT">
+    <Key>
+      <PropertyRef Name="Accountant_ID" />
+    </Key>
+    <Property Name="Accountant_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Accountant_Name" Type="varchar" MaxLength="500" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" />
+    <Property Name="Accountant_Birth" Type="date" />
+    <Property Name="Accountant_Address" Type="varchar" MaxLength="200" />
+    <Property Name="Accountant_Email" Type="varchar" MaxLength="100" />
+    <Property Name="Accountant_Phone" Type="varchar" MaxLength="20" />
+    <Property Name="Accountant_UserName" Type="varchar" MaxLength="100" />
+    <Property Name="Accountant_Password" Type="varchar" MaxLength="100" />
+    <Property Name="Accountant_Image" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="AGENT">
+    <Key>
+      <PropertyRef Name="Agent_ID" />
+    </Key>
+    <Property Name="Agent_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Agent_Name" Type="varchar" MaxLength="500" />
+    <Property Name="Agent_Address" Type="varchar" MaxLength="200" />
+    <Property Name="Agent_Email" Type="varchar" MaxLength="100" />
+    <Property Name="Agent_Phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="AGENT_ACCOUNT">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Agent_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Account_Password" Type="varchar" MaxLength="200" />
+    <Property Name="Agent_Level" Type="int" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="Customer_ID" />
+    </Key>
+    <Property Name="Customer_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Customer_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Customer_Birth" Type="date" />
+    <Property Name="Customer_Gender" Type="varchar" MaxLength="6" />
+    <Property Name="Customer_Address" Type="varchar" MaxLength="200" />
+    <Property Name="Customer_Email" Type="varchar" MaxLength="100" />
+    <Property Name="Customer_Phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="CUSTOMER_ACCOUNT">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Customer_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Account_Password" Type="varchar" MaxLength="200" />
+    <Property Name="Customer_Level" Type="int" />
+    <Property Name="code_forgot_pass" Type="varchar" MaxLength="200" />
+    <Property Name="Date_Create_Code_Forgot" Type="date" />
+  </EntityType>
+  <EntityType Name="GOOD_DELIVERY">
+    <Key>
+      <PropertyRef Name="Good_Delivery_ID" />
+    </Key>
+    <Property Name="Good_Delivery_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Transaction_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Accountant_ID" Type="varchar" MaxLength="300" />
+    <Property Name="OrderList_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Date_Created_Good_Delivery" Type="date" />
+  </EntityType>
+  <EntityType Name="INVOICE">
+    <Key>
+      <PropertyRef Name="Invoice_ID" />
+    </Key>
+    <Property Name="Invoice_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="OrderList_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Date_Created_Invoice" Type="date" />
+    <Property Name="Status_Invoice" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="MOBILE_PRODUCT">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Product_Name" Type="varchar" MaxLength="500" />
+    <Property Name="TypeProduct_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Supplier_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Unit" Type="varchar" MaxLength="20" />
+    <Property Name="Price" Type="money" />
+    <Property Name="Product_Quantities" Type="int" />
+    <Property Name="Image_Product" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ORDER_LIST">
+    <Key>
+      <PropertyRef Name="OrderList_ID" />
+    </Key>
+    <Property Name="OrderList_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="UserName_Agent" Type="varchar" MaxLength="300" />
+    <Property Name="UserName_Customer" Type="varchar" MaxLength="300" />
+    <Property Name="Date_Created_OrderList" Type="date" />
+    <Property Name="Note" Type="varchar" MaxLength="500" />
+    <Property Name="Status_OrderList" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ORDER_LIST_DETAILS">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+      <PropertyRef Name="OrderList_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="OrderList_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Quantities" Type="int" />
+    <Property Name="Delivery_Date" Type="date" />
+    <Property Name="Total_Money" Type="money" />
+    <Property Name="Remain_Quantities" Type="int" />
+  </EntityType>
+  <EntityType Name="PAYMENT_METHOD">
+    <Key>
+      <PropertyRef Name="PaymentMethod_ID" />
+    </Key>
+    <Property Name="PaymentMethod_ID" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Method_Name" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="RECEIPT_DETAILS">
+    <Key>
+      <PropertyRef Name="Receipt_ID" />
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Receipt_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Product_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Price" Type="money" />
+    <Property Name="Quantities" Type="int" />
+  </EntityType>
+  <EntityType Name="SUPPLIER">
+    <Key>
+      <PropertyRef Name="Supplier_ID" />
+    </Key>
+    <Property Name="Supplier_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Supplier_Name" Type="varchar" MaxLength="500" />
+    <Property Name="Supplier_Address" Type="varchar" MaxLength="200" />
+    <Property Name="Supplier_Email" Type="varchar" MaxLength="100" />
+    <Property Name="Suppler_Phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TRANSACTION">
+    <Key>
+      <PropertyRef Name="Transaction_ID" />
+    </Key>
+    <Property Name="Transaction_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="PaymentMethod_ID" Type="varchar" MaxLength="100" />
+    <Property Name="Date_Created_Transaction" Type="date" />
+    <Property Name="Status_Transaction" Type="varchar" MaxLength="20" />
+    <Property Name="Invoice_ID" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="TYPE_PRODUCT">
+    <Key>
+      <PropertyRef Name="TypeProduct_ID" />
+    </Key>
+    <Property Name="TypeProduct_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="TypeProductName" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="WAREHOUSE_RECEIPT">
+    <Key>
+      <PropertyRef Name="Receipt_ID" />
+    </Key>
+    <Property Name="Receipt_ID" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Accountant_ID" Type="varchar" MaxLength="300" />
+    <Property Name="Date_Created_Receipt" Type="date" />
+    <Property Name="Driver_Name" Type="varchar" MaxLength="100" />
+    <Property Name="WareHouse_Address" Type="varchar" MaxLength="100" />
+    <Property Name="Total" Type="money" />
+  </EntityType>
+  <Association Name="FK_AGENTACCOUNT_AGENT">
+    <End Role="AGENT" Type="Self.AGENT" Multiplicity="0..1" />
+    <End Role="AGENT_ACCOUNT" Type="Self.AGENT_ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENT">
+        <PropertyRef Name="Agent_ID" />
+      </Principal>
+      <Dependent Role="AGENT_ACCOUNT">
+        <PropertyRef Name="Agent_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOMERACCOUNT_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+    <End Role="CUSTOMER_ACCOUNT" Type="Self.CUSTOMER_ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="CUSTOMER_ACCOUNT">
+        <PropertyRef Name="Customer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GOODDELIVERY_ACCOUNTANT">
+    <End Role="ACCOUNTANT" Type="Self.ACCOUNTANT" Multiplicity="0..1" />
+    <End Role="GOOD_DELIVERY" Type="Self.GOOD_DELIVERY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNTANT">
+        <PropertyRef Name="Accountant_ID" />
+      </Principal>
+      <Dependent Role="GOOD_DELIVERY">
+        <PropertyRef Name="Accountant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GOODDELIVERY_ORDERLIST">
+    <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="0..1" />
+    <End Role="GOOD_DELIVERY" Type="Self.GOOD_DELIVERY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDER_LIST">
+        <PropertyRef Name="OrderList_ID" />
+      </Principal>
+      <Dependent Role="GOOD_DELIVERY">
+        <PropertyRef Name="OrderList_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GOODDELIVERY_TRANSACTION">
+    <End Role="TRANSACTION" Type="Self.TRANSACTION" Multiplicity="0..1" />
+    <End Role="GOOD_DELIVERY" Type="Self.GOOD_DELIVERY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSACTION">
+        <PropertyRef Name="Transaction_ID" />
+      </Principal>
+      <Dependent Role="GOOD_DELIVERY">
+        <PropertyRef Name="Transaction_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INVOICE_ORDERLIST">
+    <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="0..1" />
+    <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDER_LIST">
+        <PropertyRef Name="OrderList_ID" />
+      </Principal>
+      <Dependent Role="INVOICE">
+        <PropertyRef Name="OrderList_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOBILEPRODUCT_Supplier">
+    <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="0..1" />
+    <End Role="MOBILE_PRODUCT" Type="Self.MOBILE_PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUPPLIER">
+        <PropertyRef Name="Supplier_ID" />
+      </Principal>
+      <Dependent Role="MOBILE_PRODUCT">
+        <PropertyRef Name="Supplier_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOBILEPRODUCT_TYPEPRODUCT">
+    <End Role="TYPE_PRODUCT" Type="Self.TYPE_PRODUCT" Multiplicity="0..1" />
+    <End Role="MOBILE_PRODUCT" Type="Self.MOBILE_PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPE_PRODUCT">
+        <PropertyRef Name="TypeProduct_ID" />
+      </Principal>
+      <Dependent Role="MOBILE_PRODUCT">
+        <PropertyRef Name="TypeProduct_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERLIST_AGENTACCOUNT">
+    <End Role="AGENT_ACCOUNT" Type="Self.AGENT_ACCOUNT" Multiplicity="0..1" />
+    <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENT_ACCOUNT">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="ORDER_LIST">
+        <PropertyRef Name="UserName_Agent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERLIST_CUSTOMERACCOUNT">
+    <End Role="CUSTOMER_ACCOUNT" Type="Self.CUSTOMER_ACCOUNT" Multiplicity="0..1" />
+    <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER_ACCOUNT">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="ORDER_LIST">
+        <PropertyRef Name="UserName_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERLISTDETAILS_MOBILEPRODUCTS">
+    <End Role="MOBILE_PRODUCT" Type="Self.MOBILE_PRODUCT" Multiplicity="1" />
+    <End Role="ORDER_LIST_DETAILS" Type="Self.ORDER_LIST_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBILE_PRODUCT">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="ORDER_LIST_DETAILS">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERLISTDETAILS_ORDER_LIST">
+    <End Role="ORDER_LIST" Type="Self.ORDER_LIST" Multiplicity="1" />
+    <End Role="ORDER_LIST_DETAILS" Type="Self.ORDER_LIST_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDER_LIST">
+        <PropertyRef Name="OrderList_ID" />
+      </Principal>
+      <Dependent Role="ORDER_LIST_DETAILS">
+        <PropertyRef Name="OrderList_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECEIPTDETAILS_MOBILEPRODUCTS">
+    <End Role="MOBILE_PRODUCT" Type="Self.MOBILE_PRODUCT" Multiplicity="1" />
+    <End Role="RECEIPT_DETAILS" Type="Self.RECEIPT_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBILE_PRODUCT">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="RECEIPT_DETAILS">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECEIPTDETAILS_WAREHOUSE_RECEIPT">
+    <End Role="WAREHOUSE_RECEIPT" Type="Self.WAREHOUSE_RECEIPT" Multiplicity="1" />
+    <End Role="RECEIPT_DETAILS" Type="Self.RECEIPT_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WAREHOUSE_RECEIPT">
+        <PropertyRef Name="Receipt_ID" />
+      </Principal>
+      <Dependent Role="RECEIPT_DETAILS">
+        <PropertyRef Name="Receipt_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRANSACTION_INVOICE">
+    <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="0..1" />
+    <End Role="TRANSACTION" Type="Self.TRANSACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INVOICE">
+        <PropertyRef Name="Invoice_ID" />
+      </Principal>
+      <Dependent Role="TRANSACTION">
+        <PropertyRef Name="Invoice_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRANSACTION_PAYMENTMETHOD">
+    <End Role="PAYMENT_METHOD" Type="Self.PAYMENT_METHOD" Multiplicity="0..1" />
+    <End Role="TRANSACTION" Type="Self.TRANSACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAYMENT_METHOD">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Principal>
+      <Dependent Role="TRANSACTION">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAREHOUSERECEIPT_ACCOUNTANT">
+    <End Role="ACCOUNTANT" Type="Self.ACCOUNTANT" Multiplicity="0..1" />
+    <End Role="WAREHOUSE_RECEIPT" Type="Self.WAREHOUSE_RECEIPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNTANT">
+        <PropertyRef Name="Accountant_ID" />
+      </Principal>
+      <Dependent Role="WAREHOUSE_RECEIPT">
+        <PropertyRef Name="Accountant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="checkExistedAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="FINAL_SEModelStoreContainer">
+    <EntitySet Name="ACCOUNTANT" EntityType="Self.ACCOUNTANT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AGENT" EntityType="Self.AGENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AGENT_ACCOUNT" EntityType="Self.AGENT_ACCOUNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER_ACCOUNT" EntityType="Self.CUSTOMER_ACCOUNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GOOD_DELIVERY" EntityType="Self.GOOD_DELIVERY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INVOICE" EntityType="Self.INVOICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MOBILE_PRODUCT" EntityType="Self.MOBILE_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDER_LIST" EntityType="Self.ORDER_LIST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDER_LIST_DETAILS" EntityType="Self.ORDER_LIST_DETAILS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAYMENT_METHOD" EntityType="Self.PAYMENT_METHOD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RECEIPT_DETAILS" EntityType="Self.RECEIPT_DETAILS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRANSACTION" EntityType="Self.TRANSACTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TYPE_PRODUCT" EntityType="Self.TYPE_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAREHOUSE_RECEIPT" EntityType="Self.WAREHOUSE_RECEIPT" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AGENTACCOUNT_AGENT" Association="Self.FK_AGENTACCOUNT_AGENT">
+      <End Role="AGENT" EntitySet="AGENT" />
+      <End Role="AGENT_ACCOUNT" EntitySet="AGENT_ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOMERACCOUNT_CUSTOMER" Association="Self.FK_CUSTOMERACCOUNT_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="CUSTOMER_ACCOUNT" EntitySet="CUSTOMER_ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GOODDELIVERY_ACCOUNTANT" Association="Self.FK_GOODDELIVERY_ACCOUNTANT">
+      <End Role="ACCOUNTANT" EntitySet="ACCOUNTANT" />
+      <End Role="GOOD_DELIVERY" EntitySet="GOOD_DELIVERY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GOODDELIVERY_ORDERLIST" Association="Self.FK_GOODDELIVERY_ORDERLIST">
+      <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+      <End Role="GOOD_DELIVERY" EntitySet="GOOD_DELIVERY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GOODDELIVERY_TRANSACTION" Association="Self.FK_GOODDELIVERY_TRANSACTION">
+      <End Role="TRANSACTION" EntitySet="TRANSACTION" />
+      <End Role="GOOD_DELIVERY" EntitySet="GOOD_DELIVERY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INVOICE_ORDERLIST" Association="Self.FK_INVOICE_ORDERLIST">
+      <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+      <End Role="INVOICE" EntitySet="INVOICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOBILEPRODUCT_Supplier" Association="Self.FK_MOBILEPRODUCT_Supplier">
+      <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+      <End Role="MOBILE_PRODUCT" EntitySet="MOBILE_PRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOBILEPRODUCT_TYPEPRODUCT" Association="Self.FK_MOBILEPRODUCT_TYPEPRODUCT">
+      <End Role="TYPE_PRODUCT" EntitySet="TYPE_PRODUCT" />
+      <End Role="MOBILE_PRODUCT" EntitySet="MOBILE_PRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERLIST_AGENTACCOUNT" Association="Self.FK_ORDERLIST_AGENTACCOUNT">
+      <End Role="AGENT_ACCOUNT" EntitySet="AGENT_ACCOUNT" />
+      <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERLIST_CUSTOMERACCOUNT" Association="Self.FK_ORDERLIST_CUSTOMERACCOUNT">
+      <End Role="CUSTOMER_ACCOUNT" EntitySet="CUSTOMER_ACCOUNT" />
+      <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERLISTDETAILS_MOBILEPRODUCTS" Association="Self.FK_ORDERLISTDETAILS_MOBILEPRODUCTS">
+      <End Role="MOBILE_PRODUCT" EntitySet="MOBILE_PRODUCT" />
+      <End Role="ORDER_LIST_DETAILS" EntitySet="ORDER_LIST_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERLISTDETAILS_ORDER_LIST" Association="Self.FK_ORDERLISTDETAILS_ORDER_LIST">
+      <End Role="ORDER_LIST" EntitySet="ORDER_LIST" />
+      <End Role="ORDER_LIST_DETAILS" EntitySet="ORDER_LIST_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECEIPTDETAILS_MOBILEPRODUCTS" Association="Self.FK_RECEIPTDETAILS_MOBILEPRODUCTS">
+      <End Role="MOBILE_PRODUCT" EntitySet="MOBILE_PRODUCT" />
+      <End Role="RECEIPT_DETAILS" EntitySet="RECEIPT_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECEIPTDETAILS_WAREHOUSE_RECEIPT" Association="Self.FK_RECEIPTDETAILS_WAREHOUSE_RECEIPT">
+      <End Role="WAREHOUSE_RECEIPT" EntitySet="WAREHOUSE_RECEIPT" />
+      <End Role="RECEIPT_DETAILS" EntitySet="RECEIPT_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRANSACTION_INVOICE" Association="Self.FK_TRANSACTION_INVOICE">
+      <End Role="INVOICE" EntitySet="INVOICE" />
+      <End Role="TRANSACTION" EntitySet="TRANSACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRANSACTION_PAYMENTMETHOD" Association="Self.FK_TRANSACTION_PAYMENTMETHOD">
+      <End Role="PAYMENT_METHOD" EntitySet="PAYMENT_METHOD" />
+      <End Role="TRANSACTION" EntitySet="TRANSACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAREHOUSERECEIPT_ACCOUNTANT" Association="Self.FK_WAREHOUSERECEIPT_ACCOUNTANT">
+      <End Role="ACCOUNTANT" EntitySet="ACCOUNTANT" />
+      <End Role="WAREHOUSE_RECEIPT" EntitySet="WAREHOUSE_RECEIPT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

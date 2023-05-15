@@ -1,0 +1,56 @@
+﻿@model FinalSeWeb.Models.MOBILE_PRODUCT
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Describe</title>
+</head>
+<body>
+    <div class="container describe-container">
+        <div class="row d-flex">
+            
+            <h1 class="describe-title col-lg-12 col-md-12 col-sm-12" >@Model.Product_Name</h1>
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <img class="w-100" src="~/assets/img/@Model.Image_Product" />
+            </div>
+
+            <div class="describe-content p-3 col-lg-7 col-md-12 col-sm-12">
+                <p class="describe-para" >@Model.Price @Model.Unit | <span class="describe-VAT">Price includes 10% VAT</span></p>
+                @* <p>@Model.Product_Quantities</p> *@
+            <form action="@Url.Action("Add","Describe")" method="post">
+                <div class="describe-quan">
+                    <p class="describe-product__Quan">Quantity</p>
+                    @*<input  oninput="onInputQuan(id)" class="describe-quan__inp" id="quan" type="text" name="Quantity" value="" />*@
+                    <input @*oninput="onInputQuan(id)"*@ class="describe-quan__inp" id="quantity" type="text" name="quantity" value="" />
+                </div>
+                <div class="describe__btn">
+                   @* <a id="add__btn" class="describe__add-package" href="">Add to your package</a>*@
+                    <button type="submit" class="describe__add-package">Add to your package</button>
+                </div>
+            </form>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector(".describe-quan__inp").addEventListener("input", function () {
+        this.form.action = "/Describe/Add/" + this.value;
+    });
+</script>
+
+<script>
+    function onInputQuan(id){
+        let quanVal = document.getElementById(id).value;
+        let aHref = document.getElementById('add__btn');
+        aHref.href = '/Describe/Add/Quan='+quanVal;
+    }
+</script>

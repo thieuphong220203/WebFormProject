@@ -1,0 +1,62 @@
+﻿@model FinalSeWeb.Models.ORDER_LIST_DETAILS
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Check Good</title>
+</head>
+<body>
+    <div class="container p-5"> 
+        <div class="row">
+            <div class="check-goods__content col-l-12 col-md-12 col-sm-12">
+
+                <div class="<?= $bd_success_confirm ?> check-goods__items check-goods__content--confirm">
+                    <i class="<?= $text_success_confirm ?> check-goods__icon col-l-12 col-md-12 col-sm-12 fa-solid fa-file-lines"></i><br>
+                    <span class="<?= $text_success_confirm ?> check-goods__span check-goods__invoice">Invoice has been confirmed</p>
+                </div>
+
+                <div class=" <?= $bg_success_wait ?> check-goods__progress"></div>
+
+                <div class="<?= $bd_success_wait ?> check-goods__items check-goods__content--waiting">
+                    <i class="<?= $text_success_wait ?> check-goods__icon col-l-12 col-md-12 col-sm-12 fa-sharp fa-solid fa-truck"></i><br>
+                    <span class="<?= $text_success_wait ?> check-goods__span check-goods__waiting">Waiting to pick up</p>
+                </div>
+
+                <div class=" <?= $bg_success_delivery ?> check-goods__progress"></div>
+
+
+                <div class="<?= $bd_success_delivery ?> check-goods__items check-goods__content--delivery">
+                    <i class="<?= $text_success_delivery ?> check-goods__icon col-l-12 col-md-12 col-sm-12 fa-sharp fa-solid fa-truck-fast"></i><br>
+                    <span class="<?= $text_success_delivery ?> check-goods__span check-goods__delivery">Item is being shipped</p>
+                </div>
+
+                <div class=" <?= $bg_success_evaluate ?> check-goods__progress"></div>
+
+                <div class="<?= $bd_success_evaluate ?> check-goods__items check-goods__content--delivery">
+                    <i class="<?= $text_success_evaluate ?> check-goods__icon col-l-12 col-md-12 col-sm-12 fa-solid fa-star"></i><br>
+                    <span class="<?= $text_success_evaluate ?> check-goods__span check-goods__delivery">Evaluate</p>
+                </div>
+
+                <!--<div class="check-goods__contact col-l-12 col-md-12 col-sm-12">
+                    <div class="check-good__contact--info">-->
+                        <!-- <p class="check-goods__contact--title"></p> -->
+
+
+                        <!--<textarea oninput="onInputNote()" class="check-goods__note" placeholder="Note here before 23h59 <?= $delivery_date ?>" name="" id="note" cols="40" rows="5"><?= $note ?></textarea>
+
+                    </div>
+
+                    <a id="contact_btn" class="check-goods__btn bg-success text-light" href="?page=check_goods_contact&note=">Contact seller</a>
+
+                </div>-->
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

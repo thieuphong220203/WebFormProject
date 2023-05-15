@@ -1,0 +1,156 @@
+﻿@model FinalSeWeb.Models.AGENT_ACCOUNT
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="page-sectionf features" style="margin: 150px 0px">
+        <div class="container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="container d-flex m-auto flex-wrap justify-content-center">
+
+                <h4 class="text-center">AGENT_ACCOUNT</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @*@Html.HiddenFor(model => model.UserName)*@
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="UserName" class="control-label col-md-2" style="">User Name</label>
+                    <div class="col-md-10">
+                        @* @Html.TextBoxFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })*@
+                        <input type="text" id="UserName" name="UserName" value="@Model.UserName" class="form-control" readonly/>
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*  @Html.LabelFor(model => model.Agent_ID, "Agent_ID", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="Agent_ID" class="control-label col-md-2" style="">Agent ID</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("Agent_ID", ViewBag.listAgent as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Agent_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*@Html.LabelFor(model => model.Account_Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="Account_Password" class="control-label col-md-2" style="">Password</label>
+                    <div class="col-md-10">
+                        @* @Html.EditorFor(model => model.Account_Password, new { htmlAttributes = new { @class = "form-control" } })*@
+                        <input type="password" id="Account_Password" name="Account_Password" value="@Model.Account_Password" class="form-control" onmouseover="showPassword()" onmouseout="hidePassword()" />
+                        
+                        @Html.ValidationMessageFor(model => model.Account_Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <script>
+                        function showPassword() {
+                            var passwordInput = document.getElementById("Account_Password");
+                            passwordInput.type = "text";
+                        }
+
+                        function hidePassword() {
+                            var passwordInput = document.getElementById("Account_Password");
+                            passwordInput.type = "password";
+                        }
+
+                        function togglePasswordVisibility() {
+                            var passwordInput = document.getElementById("Account_Password");
+                            if (passwordInput.type === "password") {
+                                showPassword();
+                            } else {
+                                hidePassword();
+                            }
+                        }
+
+                        // Hide the password by default
+                        hidePassword();
+                    </script>
+                </div>
+
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*@Html.LabelFor(model => model.Agent_Level, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="Agent_Level" class="control-label col-md-2" style="">Level</label>
+                    <div class="col-md-10">
+                        @* @Html.EditorFor(model => model.Agent_Level, new { htmlAttributes = new { @class = "form-control" } })*@
+                        <input type="number" id="Agent_Level" name="Agent_Level" value="@Model.Agent_Level" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Agent_Level, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*@Html.LabelFor(model => model.Account_Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="Agent_Name" class="control-label col-md-2" style="">Full Name</label>
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.Account_Password, new { htmlAttributes = new { @class = "form-control" } })*@
+                        <input type="text" id="Agent_Name" name="Agent_Name" value="@ViewBag.listAgents.Agent_Name" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Account_Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*@Html.LabelFor(model => model.Account_Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="Agent_Address" class="control-label col-md-2" style="">Address</label>
+                    <div class="col-md-10">
+                        <input type="text" id="Agent_Address" name="Agent_Address" value="@ViewBag.listAgents.Agent_Address" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Account_Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*@Html.LabelFor(model => model.Account_Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="Agent_Email" class="control-label col-md-2" style="">Email</label>
+                    <div class="col-md-10">
+                        <input type="text" id="Agent_Email" name="Agent_Email" value="@ViewBag.listAgents.Agent_Email" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Account_Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12">
+                    @*@Html.LabelFor(model => model.Account_Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label name="Agent_Phone" class="control-label col-md-2" style="">Password</label>
+                    <div class="col-md-10">
+                        <input type="text" id="Agent_Phone" name="Agent_Phone" value="@ViewBag.listAgents.Agent_Phone" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Account_Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success" style="margin:10px 0">@TempData["SuccessMessage"]</div>
+                }
+
+                @if (TempData["errorMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @TempData["errorMessage"]
+                    </div>
+                }
+                <div class="form-group p-3 col-lg-12 col-md-12 col-sm-12 text-center">
+                    <div class="col-md-offset-2 col-md-10" style="margin-top:12px">
+                        <button type="submit" class="btn btn-primary w-25">
+                            <span class="glyphicon glyphicon-save">Save</span> 
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+                <div class="row">
+                    <div class="col-md-12 p-5">
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-primary" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</main>
+
+
+
+
+

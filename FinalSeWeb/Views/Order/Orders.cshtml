@@ -1,0 +1,59 @@
+﻿@model List<FinalSeWeb.Models.ORDER_LIST_DETAILS>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Order</title>
+</head>
+<body>
+    <div class="container p-5">
+        <div class="row justify-content-center">
+
+            <h1 class="text-center p-2 package__title col-l-12 col-md-12 col-sm-12">Your Order</h1>
+
+            <!-- <input placeholder="Search On All" type="text" name="" id="search-input" class="my_order__inp"> -->
+            <div id="products__list" class="order__content col-l-12 col-md-12 col-sm-12">
+                @foreach (var i in Model)
+                {
+                    <a href="" class="products__items order__content--inner">
+                        <div class="order__content--img col-l-2 col-md-2 col-sm-2">
+                            <img class="order__img w-100" src="~/assets/img/@i.MOBILE_PRODUCT.Image_Product" alt="" srcset="">
+                        </div>
+
+                        <div class="order__content--info col-l-7 col-md-7 col-sm-7">
+                            <p class="order__content--title">@i.MOBILE_PRODUCT.Product_Name</p>
+                            <span class="order__content--date"><strong>Date Created:</strong> @i.ORDER_LIST.Date_Created_OrderList</span><br>
+                            <span class="order__content--date"><strong>Delivery Date:</strong> @i.Delivery_Date</span><br>
+                            <span class="order__content--type"><strong>Type:</strong> @i.MOBILE_PRODUCT.TYPE_PRODUCT.TypeProductName</span><br>
+                            <span class="order__content--quan"><strong>x @i.Quantities</strong></span>
+
+                        </div>
+
+
+                        <div class="order__content--price col-l-3 col-md-3 col-sm-3">
+                            <p class="order__content--money">@i.Total_Money @i.MOBILE_PRODUCT.Unit</p>
+                        </div>
+                    </a>
+
+                }
+
+
+            </div>
+
+            <script>
+
+            </script>
+
+            @*<h1 class="text-center p-3 package__title col-l-12 col-md-12 col-sm-12">Your Order</h1>
+                <img class=" col-l-8 col-md-8 col-sm-8" src="./assets/img/no_package.png" alt="" srcset="">
+                <p style="font-weight: bold;" class="text-center p-3 mb-0 package__para col-l-12 col-md-12 col-sm-12">You don't have any products in your order yet</p>*@
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+﻿
+@model List<FinalSeWeb.Models.ORDER_LIST_DETAILS>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OrderList</title>
+    
+</head>
+<body>
+
+    @if (FinalSeWeb.Class.Function.checkAgentOD(Session["agent_name"].ToString()))
+    {
+
+        <div class="container p-5">
+            <div class="row">
+
+                <div class="package__content col-l-5 col-md-5 col-sm-12">
+                    
+                    @foreach (var product in Model)
+                    {
+                        //var ol = product.OrderList_ID;
+                        <div class="package__content--inner col-l-12 col-md-12 col-sm-12">
+                            <img class="package__content--img w-100" src="~/assets/img/@product.MOBILE_PRODUCT.Image_Product" alt="" srcset="">
+                            <p class="package__content--para">@product.MOBILE_PRODUCT.Product_Name</p>
+                            <p class="package__content--para">Quantity: @product.Quantities</p>
+                            <p class="package__content--para">Remain Quantity: @product.Remain_Quantities</p>
+                            <!-- <input type="hidden" name="" id="remain_quan" value=""> -->
+                            <p class="package__content--para package__content--para-price">
+                                @product.Total_Money <span class="package__content--unit">@product.MOBILE_PRODUCT.Unit</span>
+                            </p>
+
+                            <a style="color: red;" href="/List/Remove?od=@product.OrderList_ID&pr=@product.Product_ID" class="package__content--del d-flex align-items-center justify-content-center">
+                                <span class="package__content--para"> Remove</span>
+                                <i style="font-size: 1.2rem; text-decoration: none;" class="fa-solid fa-circle-minus pt-1 pl-2"></i>
+                            </a>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="package__payment col-l-7 col-md-7 col-sm-12">
+                    <h1 class="package__payment--title">Order info</h1>
+                    @*<p>The Quantity is: @ViewBag.Quantity</p>*@
+
+                    <div class="package__payment--info">
+                        <input class="package__payment--inp" placeholder="Your name *" type="text" value="@ViewBag.name" name="" id="">
+                    </div>
+
+                    <div class="package__payment--info">
+                        <input class="package__payment--inp" placeholder="Your phone *" type="text" value="@ViewBag.phone" name="" id="">
+                    </div>
+
+                    <div class="package__payment--info">
+                        <input class="package__payment--inp" placeholder="Your email*" type="text" value="@ViewBag.email" name="" id="">
+                    </div>
+
+                    <div class="package__payment--info">
+                        <p class="package__payment--para">Delivery location</p>
+                        <input class="package__payment--inp" placeholder="Your delivery location*" type="text" value="@ViewBag.address" name="" id="">
+                    </div>
+
+                    <div class="package__payment--info">
+                        <p class="package__payment--para">Payment method</p>
+                        <div class="package__payment--inp package__payment--method">
+                            <label onclick="onClickPaymentMethod(id)" for="Cash" id="PM002" class="package__payment--method-check">
+                                <input value="Cash" type="radio" value="" name="payment-method" id="Cash" required>
+                                Cash
+                                <img class="w-25" src="~/assets/img/cash-payment.jpg" alt="" srcset="">
+                            </label>
+
+                            <label onclick="onClickPaymentMethod(id)" for="vnpay" id="PM001" class="package__payment--method-check">
+                                <input value="VNPay" type="radio" value="" name="payment-method" id="vnpay" required>
+                                VNPay
+                                <img class="w-25" src="~/assets/img/vnpay-payment.jpg" alt="" srcset="">
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="package__payment--info package__payment--checkbox">
+                        <input type="checkbox" name="" id="com-invoice">
+                        <label for="com-invoice" class="package__payment--para">Request a company invoice (Please enter your email to receive a VAT invoice)</label>
+                    </div>
+
+                    <a href="" id="package__payment--btn" class="w-75 package__payment--btn">Order confirmation</a>
+
+                </div>
+
+
+            </div>
+        </div>
+    }
+    else
+    {
+        FinalSeWeb.Class.Function.deleteOrdeList(Session["agent_name"].ToString());
+
+
+<div class="container p-5">
+    <div class="row justify-content-center">
+        <h1 class="text-center p-3 package__title col-l-12 col-md-12 col-sm-12">Your Package</h1>
+        <img class=" col-l-8 col-md-8 col-sm-8" src="~/assets/img/no_package.png" alt="" srcset="">
+        <p style="font-weight: bold;" class="text-center p-3 mb-0 package__para col-l-12 col-md-12 col-sm-12">You don't have any products in your cart yet</p>
+    </div>
+</div>
+    }
+    </body>
+</html>
+
+<script>
+    function onClickPaymentMethod(id) {
+        let payment_btn = document.getElementById('package__payment--btn');
+        payment_btn.href = "/List/OrderConfirm?ol=@FinalSeWeb.Class.Function.getMaxOrderList(Session["agent_name"].ToString())&PM="+id;
+    }
+
+    @*function onClickVNPayPayment(id) {
+        let payment_btn = document.getElementById('package__payment--btn');
+        payment_btn.href = "/List/OrderConfirmVNPay?ol=@FinalSeWeb.Class.Function.getMaxOrderList(Session["agent_name"].ToString())&PM="+id";
+    }*@
+
+</script>

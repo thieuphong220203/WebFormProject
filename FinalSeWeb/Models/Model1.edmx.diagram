@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cabdcbf75a8b46169f1924c5e18d1cc2" Name="Diagram1">
+        <EntityTypeShape EntityType="FINAL_SEModel.ACCOUNTANT" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.AGENT" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.AGENT_ACCOUNT" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.CUSTOMER_ACCOUNT" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.GOOD_DELIVERY" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.INVOICE" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.MOBILE_PRODUCT" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.ORDER_LIST" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.ORDER_LIST_DETAILS" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.PAYMENT_METHOD" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.RECEIPT_DETAILS" Width="1.5" PointX="12.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.SUPPLIER" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.sysdiagram" Width="1.5" PointX="2.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.TRANSACTION" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.TYPE_PRODUCT" Width="1.5" PointX="6" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINAL_SEModel.WAREHOUSE_RECEIPT" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="FINAL_SEModel.FK_GOODDELIVERY_ACCOUNTANT" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_WAREHOUSERECEIPT_ACCOUNTANT" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_AGENTACCOUNT_AGENT" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_ORDERLIST_AGENTACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_CUSTOMERACCOUNT_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_ORDERLIST_CUSTOMERACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_GOODDELIVERY_ORDERLIST" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_GOODDELIVERY_TRANSACTION" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_INVOICE_ORDERLIST" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_TRANSACTION_INVOICE" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_MOBILEPRODUCT_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_MOBILEPRODUCT_TYPEPRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_ORDERLISTDETAILS_MOBILEPRODUCTS" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_RECEIPTDETAILS_MOBILEPRODUCTS" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_ORDERLISTDETAILS_ORDER_LIST" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_TRANSACTION_PAYMENTMETHOD" ManuallyRouted="false" />
+        <AssociationConnector Association="FINAL_SEModel.FK_RECEIPTDETAILS_WAREHOUSE_RECEIPT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
